@@ -1,7 +1,7 @@
 import pygame as p
 from Chess import ChessEngine
 
-WIDTH = HEIGHT = 600
+WIDTH = HEIGHT = 500
 DIMENSION = 8
 SQ_SIZE = HEIGHT//DIMENSION
 MAX_FPS = 15
@@ -54,20 +54,11 @@ def main():
                 if len(playerClicks)==2:
                     move = ChessEngine.Move(playerClicks[0], playerClicks[1], gs.board)
                     print(move.getChessNotation())
-                    if move in validMoves:
-                        gs.makeMove(move)
-                        moveMade = True
+                    gs.makeMove(move)
                     sqSelected = () #reset user clicks
                     playerClicks = []
             #keys handler
-            elif e.type == p.KEYDOWN:
-                if e.key == p.K_z: # undo move if z is pressed
-                    gs.undoMove()
-                    moveMade = True
 
-        if moveMade:
-            validMoves = gs.getValidMoves()
-            moveMade = False
 
         drawGameState(screen, gs)
         clock.tick(MAX_FPS)
