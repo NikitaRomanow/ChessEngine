@@ -32,23 +32,23 @@ class GameState():
         return self.getAllPossibleMoves()
 
     def getAllPossibleMoves(self):
-        moves = []
+        moves = [Move((6,4),(4,4),self.board)]
         for row in range(len(self.board)):
             for col in range(len(self.board[row])):
                 turn = self.board[row][col][0]
-                if (turn == "w" and self.whiteToMove) and  (turn == "b" and not self.whiteToMove):
+                if (turn == "w" and self.whiteToMove) and (turn == "b" and not self.whiteToMove):
                     piece = self.board[row][col][1]
                     if piece == "p":
-                        self.getPawnMoves(row,col,moves)
+                        self.getPawnMoves(row, col, moves)
                     elif piece == "R":
-                        self.getRockMoves(row, col, moves)
+                        self.getRookMoves(row, col, moves)
         return moves
 
     """
     Desctibing the possibilities of pieces moves
     """
 
-    def getPawnMoves(self,row,col,moves):
+    def getPawnMoves(self, row, col, moves):
         pass
 
     def getRockMoves(self,row,col,moves):
